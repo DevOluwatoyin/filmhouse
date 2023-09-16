@@ -6,8 +6,9 @@ import { BsFillSuitHeartFill } from "react-icons/Bs";
 
 const Card = ({title, releaseDate, poster}) => {
   const [active, setActive] = useState(false);
+
   return (
-    <div className="space-y-2">
+    <div data-testid="movie-card" className="space-y-2 text-center">
       <div className="relative">
         <BsFillSuitHeartFill
           className={
@@ -17,22 +18,20 @@ const Card = ({title, releaseDate, poster}) => {
           }
           onClick={() => setActive(!active)}
         />
-        <img src={poster} alt="movie poster" />
+        <img
+          src={`https://image.tmdb.org/t/p/w500${poster}`}
+          data-testid="movie-poster"
+          alt="movie poster"
+        />
       </div>
-      <p className="font-bold text-xs text-gray-400">USA, 2016 - Current</p>
-      <h4 className="font-bold text-lg text-gray-900">Stranger Things</h4>
-      <div className="flex items-center justify-between gap-4 text-xs text-gray-900">
-        <div className="flex items-center justify-center gap-2">
-          <img src={imdb} alt="imdb logo" />
-          <span>86.0/100</span>
-        </div>
-        <div className="flex items-center justify-center gap-2">
-          <img src={tomato} alt="tomato" />
-          <span>97%</span>
-        </div>
-      </div>
-      <p className="font-bold text-xs text-gray-400">
-        Action, Adventure, Horror
+      <h4 data-testid="movie-title" className="font-bold text-lg text-gray-900">
+        {title}
+      </h4>
+      <p
+        data-testid="movie-release-date"
+        className="font-bold text-sm text-gray-400"
+      >
+        {releaseDate}
       </p>
     </div>
   );

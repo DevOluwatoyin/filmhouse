@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Movies = () => {
-  const [topRated, setTopRated] = useState(null);
+  const [topRated, setTopRated] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getTopRated = async () => {
     try {
@@ -28,6 +29,7 @@ const Movies = () => {
 
   useEffect(() => {
     getTopRated();
+    setLoading(false);
   }, []);
   return (
     <div>
@@ -41,12 +43,20 @@ const Movies = () => {
           <img src={right} alt="right arrow" />
         </Link>
       </div>
-      <div className="movies px-4 md:max-w-[90%] md:mx-auto">
-        {topRated.map((item, i) => {
-          <Card key={i} />
-
-        })}
-      </div>
+      {loading ? (
+        <div>loading</div>
+      ) : (
+        <div className="movies px-4 md:max-w-[90%] md:mx-auto">
+          {topRated.map((item, i) => (
+            <Card
+              key={i}
+              title={item.title}
+              releaseDate={item.release_date}
+              poster={item.poster_path}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
