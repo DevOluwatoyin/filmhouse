@@ -9,7 +9,7 @@ const Movies = () => {
       <div className="flex justify-between items px-4 md:max-w-[90%] md:mx-auto mt-14 mb-8">
         <h2 className="font-extrabold text-4xl ">Featured Movie</h2>
         <Link
-          to="/"
+          to="/movie"
           className="text-rose-700 flex items-center justify-center gap-5"
         >
           <span>See more</span>
