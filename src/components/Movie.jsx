@@ -57,7 +57,7 @@ const Movie = () => {
                 <button className="text-white bg-rose-700 rounded-lg px-4 py-2">
                   Top rated movie #65
                 </button>
-                <div className="flex justify-between p-2 text-gray-600 w-2/3">
+                <div className="shadow flex justify-between p-2 text-gray-600 w-2/3">
                   Awards 9 nominations
                   <img src={down} alt="down arrow" />
                 </div>
