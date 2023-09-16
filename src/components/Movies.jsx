@@ -7,18 +7,11 @@ import axios from "axios";
 const Movies = () => {
   const [topRated, setTopRated] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const api = "d136620e549328df16c17b42f8f1d486";
   const getTopRated = async () => {
     try {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMTM2NjIwZTU0OTMyOGRmMTZjMTdiNDJmOGYxZDQ4NiIsInN1YiI6IjY0NmMxNjA0MzNhMzc2MDBlNjdiZGFhNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KM12ETMbbMgSxRwFS7LjtpHUqPTPTaEK5vDTZ4YLyr4",
-            "Content-Type": "application/json",
-          },
-        }
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${api}`
       );
       console.log(response.data.results.slice(0, 10));
       setTopRated(response.data.results.slice(0, 10));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import star from "../assets/star.png";
 import down from "../assets/expand-arrow.png";
@@ -6,8 +6,35 @@ import bottom from "../assets/rectangle-37.png";
 import ticket from "../assets/two-tickets.png"
 import list from "../assets/list.png"
 import { useParams } from "react-router-dom";
+import axios from "axios";
 const Movie = () => {
   const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  const api = "d136620e549328df16c17b42f8f1d486";
+
+  
+  const fetchMovieDetails = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${api}`
+        );
+        setMovie(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    useEffect(() => {
+      fetchMovieDetails();
+    });
+  
+    if (!movie) {
+      return <div>Loading...</div>;
+  }
+
+  const { backdrop_path, title, release_date, overview, runtime, tagline } =
+    movie;
 
   return (
     <div className="flex items-center justify-between gap-10">
@@ -36,10 +63,7 @@ const Movie = () => {
           <div className="flex items-center justify-between gap-7 ">
             <div className="space-y-6 text-xl w-3/4">
               <p className="text-xl">
-                After thirty years, Maverick is still pushing the envelope as a
-                top naval aviator, but must confront ghosts of his past when he
-                leads TOP GUN's elite graduates on a mission that demands the
-                ultimate sacrifice from those chosen to fly it.
+                {overview}
               </p>
               <p>
                 Director: <span className="text-rose-700">Joseph Kosinski</span>
