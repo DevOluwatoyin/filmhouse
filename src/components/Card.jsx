@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import poster from "../assets/poster.png";
 import imdb from "../assets/imdb.png";
 import tomato from "../assets/tomato.png";
 import { BsFillSuitHeartFill } from "react-icons/Bs";
 
-const Card = () => {
+const Card = ({title, releaseDate, poster}) => {
+  const [active, setActive] = useState(false);
   return (
     <div className="space-y-2">
       <div className="relative">
-        <BsFillSuitHeartFill className="text-gray-300 absolute right-3" />
+        <BsFillSuitHeartFill
+          className={
+            active
+              ? "absolute right-3 text-2xl top-4 text-purple-800"
+              : "text-gray-300 absolute text-2xl right-3 top-4"
+          }
+          onClick={() => setActive(!active)}
+        />
         <img src={poster} alt="movie poster" />
       </div>
       <p className="font-bold text-xs text-gray-400">USA, 2016 - Current</p>

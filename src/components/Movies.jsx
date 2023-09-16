@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import right from "../assets/chevron-right.svg";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Movies = () => {
+  const [topRated, setTopRated] = useState(null);
+
+  const getTopRated = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMTM2NjIwZTU0OTMyOGRmMTZjMTdiNDJmOGYxZDQ4NiIsInN1YiI6IjY0NmMxNjA0MzNhMzc2MDBlNjdiZGFhNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KM12ETMbbMgSxRwFS7LjtpHUqPTPTaEK5vDTZ4YLyr4",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data.results.slice(0, 10));
+      setTopRated(response.data.results.slice(0, 10));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getTopRated();
+  }, []);
   return (
     <div>
       <div className="flex justify-between items px-4 md:max-w-[90%] md:mx-auto mt-14 mb-8">
@@ -16,8 +41,11 @@ const Movies = () => {
           <img src={right} alt="right arrow" />
         </Link>
       </div>
-      <div className="px-4 md:max-w-[90%] md:mx-auto">
-        <Card />
+      <div className="movies px-4 md:max-w-[90%] md:mx-auto">
+        {topRated.map((item, i) => {
+          <Card key={i} />
+
+        })}
       </div>
     </div>
   );
