@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import poster from "../assets/poster.png";
 import imdb from "../assets/imdb.png";
 import tomato from "../assets/tomato.png";
-import { BsFillSuitHeartFill } from "react-icons/Bs";
+import { BsFillSuitHeartFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-const Card = ({title, releaseDate, poster}) => {
+const Card = ({id, title, releaseDate, poster}) => {
   const [active, setActive] = useState(false);
 
   return (
-    <div data-testid="movie-card" className="space-y-2 text-center">
+    <Link to={`/movies/${id}`} data-testid="movie-card" className="space-y-2 text-center">
       <div className="relative">
         <BsFillSuitHeartFill
           className={
@@ -33,7 +34,7 @@ const Card = ({title, releaseDate, poster}) => {
       >
         {releaseDate}
       </p>
-    </div>
+    </Link>
   );
 };
 

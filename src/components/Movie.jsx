@@ -5,7 +5,10 @@ import down from "../assets/expand-arrow.png";
 import bottom from "../assets/rectangle-37.png";
 import ticket from "../assets/two-tickets.png"
 import list from "../assets/list.png"
+import { useParams } from "react-router-dom";
 const Movie = () => {
+  const { id } = useParams();
+
   return (
     <div className="flex items-center justify-between gap-10">
       <Sidebar />

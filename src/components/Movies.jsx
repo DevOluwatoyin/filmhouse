@@ -50,6 +50,7 @@ const Movies = () => {
           {topRated.map((item, i) => (
             <Card
               key={i}
+              id={item.id}
               title={item.title}
               releaseDate={item.release_date}
               poster={item.poster_path}
