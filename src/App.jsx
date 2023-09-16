@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 import './App.css'
+import Header from './components/Header'
 
 function App() {
 
   return (
-  <div>Hello world <Link to="/movie">Go to movie page</Link></div>
+    <main>
+      <Header />
+    </main>
   )
 }
 

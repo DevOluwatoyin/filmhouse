@@ -1,0 +1,10 @@
+.header {
+  background: url("/src/assets/header.png") no-repeat center;
+  /* object-fit: ; */
+}
+
+@media screen and (min-width: 1441px) {
+  .header {
+    background-size: 100vw;
+  }
+}
