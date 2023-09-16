@@ -9,17 +9,21 @@ import play from "../assets/play.png";
 const Header = () => {
   return (
     <div className="header text-white h-[75vh] p-4">
-      <nav className="flex items-center justify-between">
-        <div className="">
+      <nav className="flex items-center justify-between md:max-w-[95%] md:mx-auto">
+        <div className="flex items-center justify-center gap-4">
           <img src={logo} alt="logo" />
-          <h1>MovieBox</h1>
+          <h1 className="text-2xl font-bold">MovieBox</h1>
         </div>
-        <div>
-          <input type="text" placeholder="What do you want to watch?" />
+        <div className="flex items-center justify-between gap-4 w-2/5 border border-white px-2 rounded">
+          <input
+            type="text"
+            placeholder="What do you want to watch?"
+            className="bg-transparent w-11/12 p-2 outline-none placeholder:text-white"
+          />
           <img src={search} alt="search" />
         </div>
-        <div className="">
-          <h3>Sign in</h3>
+        <div className="flex items-center justify-center gap-4">
+          <h3 className="font-bold">Sign in</h3>
           <img src={menu} alt="menu-icon" />
         </div>
       </nav>
