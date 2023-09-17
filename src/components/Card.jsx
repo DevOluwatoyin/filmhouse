@@ -9,7 +9,7 @@ const Card = ({id, title, releaseDate, poster}) => {
   const [active, setActive] = useState(false);
 
   return (
-    <Link to={`/movies/${id}`} data-testid="movie-card" className="space-y-2 text-center">
+    <Link to={`/movie/${id}`} data-testid="movie-card" className="space-y-2 text-center">
       <div className="relative">
         <BsFillSuitHeartFill
           className={
