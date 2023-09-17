@@ -40,8 +40,7 @@ const Movie = () => {
     );
   }
 
-  const { backdrop_path, title, release_date, overview, runtime, tagline } =
-    movie;
+  const { title, release_date, overview, runtime } = movie;
 
   return (
     <div className="flex items-center justify-between gap-10">
@@ -52,8 +51,10 @@ const Movie = () => {
         </video>
         <div>
           <div className="flex justify-between items-center px-2 my-4">
-            <p className="font-bold text-2xl flex items-center text-video-100">
-              Top Gun: Maverick &bull; 2022 &bull; PG-13 &bull; 2h 10m
+            <p className="font-bold text-2xl flex items-center text-video-100 justify-between space-x-5">
+              <span data-testid="movie-title">{title}</span>{" "}
+              <span data-testid="movie-release-date">{release_date}</span>
+              <span data-testid="movie-runtime">{runtime}</span>minutes
               <span className="text-sm text-rose-700 font-medium px-2 py-1 mx-2 border shadow-md rounded-3xl">
                 Action
               </span>
@@ -69,7 +70,9 @@ const Movie = () => {
           </div>
           <div className="flex items-center justify-between gap-7 ">
             <div className="space-y-6 text-xl w-3/4">
-              <p className="text-xl">{overview}</p>
+              <p className="text-xl" data-testid="movie-overview">
+                {overview}
+              </p>
               <p>
                 Director: <span className="text-rose-700">Joseph Kosinski</span>
               </p>
