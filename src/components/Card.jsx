@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import poster from "../assets/poster.png";
 import imdb from "../assets/imdb.png";
 import tomato from "../assets/tomato.png";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const Card = ({id, title, releaseDate, poster}) => {
+const Card = ({ id, title, releaseDate, poster }) => {
   const [active, setActive] = useState(false);
+  const heartRef = useRef();
+  const heartChange = (e) => {
+    if (!heartRef.current.contains(e.target)) {
+      setActive(!active);
+    }
+  };
 
   return (
-    <Link to={`/movie/${id}`} data-testid="movie-card" className="space-y-2 text-center">
+    <Link
+      to={`/movie/${id}`}
+      onClick={heartChange}
+      data-testid="movie-card"
+      className="space-y-2 text-center"
+    >
       <div className="relative">
         <BsFillSuitHeartFill
+          // ref={heartRef}
           className={
             active
               ? "absolute right-3 text-2xl top-4 text-purple-800"

@@ -13,7 +13,7 @@ const Movies = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${api}`
       );
-      console.log(response.data.results.slice(0, 10));
+      // console.log(response.data.results.slice(0, 10));
       setTopRated(response.data.results.slice(0, 10));
     } catch (error) {
       console.log(error);
